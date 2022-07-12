@@ -1,6 +1,11 @@
+import 'dart:convert';
+
+import 'package:findcollege/services/colleges_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+// Helper packages
+import 'package:http/http.dart' as http;
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -23,7 +28,12 @@ class _HomeState extends State<Home> {
   }
 
   // submit search
-  void handleSubmittion() {
+  void handleSubmittion() async {
+    // print('submit - ${inputController.text}');
+    dynamic instance = CollegesList(country: inputController.text.toString());
+    await instance.getColleges();
+    print(instance.isValid);
+
     inputController.clear();
   }
 
