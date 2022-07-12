@@ -15,6 +15,11 @@ class _LoadingState extends State<Loading> {
   void initState() {
     super.initState();
 
+    @override
+    void dispose() {
+      super.dispose();
+    }
+
     Future.delayed(Duration(seconds: 5), () {
       print('redirect user to home');
       Navigator.pushReplacementNamed(context, '/home');
