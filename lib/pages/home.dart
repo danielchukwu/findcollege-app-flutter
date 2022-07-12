@@ -33,7 +33,7 @@ class _HomeState extends State<Home> {
       backgroundColor: const Color(0xFFf6f7f7),
       body: SafeArea(
         child: Container(
-          color: Colors.black,
+          color: Colors.black87,
           // decoration: const BoxDecoration(
           //     image: DecorationImage(
           //   image: AssetImage('assets/images/9-15.jpg'),
@@ -48,6 +48,7 @@ class _HomeState extends State<Home> {
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 40,
+                      fontFamily: 'DMSerif',
                     )),
                 const SizedBox(height: 20.0),
 
@@ -56,7 +57,8 @@ class _HomeState extends State<Home> {
                   // onChanged: (value) => print(value),
                   onSubmitted: (value) => handleSubmittion(),
                   controller: inputController,
-                  style: const TextStyle(color: Colors.white),
+                  style: const TextStyle(
+                      color: Colors.white, fontFamily: 'Proxima'),
                   decoration: const InputDecoration(
                       filled: false,
                       fillColor: Colors.white,
@@ -85,6 +87,9 @@ class _HomeState extends State<Home> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.white,
+                        letterSpacing: 1.0,
+                        height: 1.5,
+                        fontFamily: 'Proxima',
                       ),
                     ),
                   ],
