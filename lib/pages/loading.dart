@@ -3,8 +3,23 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-class Loading extends StatelessWidget {
+class Loading extends StatefulWidget {
   const Loading({Key? key}) : super(key: key);
+
+  @override
+  State<Loading> createState() => _LoadingState();
+}
+
+class _LoadingState extends State<Loading> {
+  @override
+  void initState() {
+    super.initState();
+
+    Future.delayed(Duration(seconds: 5), () {
+      print('redirect user to home');
+      Navigator.pushReplacementNamed(context, '/home');
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
