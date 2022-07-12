@@ -32,43 +32,65 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: const Color(0xFFf6f7f7),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(50, 200, 50, 100),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SizedBox(
-                child: Column(
-                  children: [
-                    Text('Find a Country'.toUpperCase()),
-                    const SizedBox(height: 20.0),
+        child: Container(
+          color: Colors.black,
+          // decoration: const BoxDecoration(
+          //     image: DecorationImage(
+          //   image: AssetImage('assets/images/9-15.jpg'),
+          //   fit: BoxFit.cover,
+          // )),
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(50, 200, 50, 0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text('Find a Country'.toUpperCase(),
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 40,
+                    )),
+                const SizedBox(height: 20.0),
 
-                    // Add Input Field Here
-                    TextField(
-                      // onChanged: (value) => print(value),
-                      onSubmitted: (value) => handleSubmittion(),
-                      controller: inputController,
-                      decoration: InputDecoration(
-                        hintText: 'Enter a country name',
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(50)),
+                // Add Input Field Here
+                TextField(
+                  // onChanged: (value) => print(value),
+                  onSubmitted: (value) => handleSubmittion(),
+                  controller: inputController,
+                  style: const TextStyle(color: Colors.white),
+                  decoration: const InputDecoration(
+                      filled: false,
+                      fillColor: Colors.white,
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.zero,
+                        borderSide: BorderSide(color: Colors.white),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.zero,
+                        borderSide: BorderSide(color: Colors.white),
+                      ),
+                      hintText: 'Enter a country name',
+                      hintStyle: TextStyle(color: Colors.white)
+
+                      // border: OutlineInputBorder(
+                      //     borderRadius: BorderRadius.circular(50)),
+                      ),
+                ),
+
+                const SizedBox(height: 100.0),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: const [
+                    Text(
+                      'Find the college of your dreams today!\nEnter any country of your choice above to see the countries in that location',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
                       ),
                     ),
                   ],
-                ),
-              ),
-              const SizedBox(height: 30.0),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  const Text(
-                    'Find the college of your dreams today!\nEnter any country of your choice above to see the countries in that location',
-                    textAlign: TextAlign.center,
-                  ),
-                ],
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ),
       ),
