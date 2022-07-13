@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class CollegesListScreen extends StatefulWidget {
   const CollegesListScreen({Key? key}) : super(key: key);
@@ -12,21 +14,35 @@ class _CollegesListScreenState extends State<CollegesListScreen> {
   List colleges = [];
 
   Widget listCardTemplate(college) {
+    final Uri url = Uri.parse(college['domains'][0]);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Container(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-            child: Text(
-              college['name'],
-              style: const TextStyle(
-                  // fontFamily: 'Proxima',
-                  // fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                  letterSpacing: 2.0),
-            ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 0, vertical: 20),
+          child: Text(
+            college['name'],
+            style: const TextStyle(
+                // fontFamily: 'Proxima',
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+                letterSpacing: 1.0),
           ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(college['alpha_two_code']),
+            InkWell(
+              onTap: () => launchUrl(url),
+              child: TextButton.icon(
+                onPressed: () => launchUrl(url),
+                icon: const Icon(Icons.arrow_forward),
+                label: const Text(''),
+              ),
+            ),
+            // Text(college['web_pages'][0]),
+          ],
         ),
         const Divider(height: 20),
       ],
@@ -75,13 +91,13 @@ class _CollegesListScreenState extends State<CollegesListScreen> {
         backgroundColor: Colors.black,
       ),
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+        padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
         child: Column(
           children: [
             Text('Found ${colleges.length} colleges in $country'),
             const SizedBox(height: 50),
             Container(
-              color: Colors.white,
+              // color: Colors.white,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: colleges
