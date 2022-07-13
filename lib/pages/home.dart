@@ -22,9 +22,9 @@ class _HomeState extends State<Home> {
     // TODO: implement initState
     super.initState();
 
-    inputController.addListener(() {
-      print(inputController.text);
-    });
+    // inputController.addListener(() {
+    //   print(inputController.text);
+    // });
   }
 
   // submit search
@@ -32,9 +32,20 @@ class _HomeState extends State<Home> {
     // print('submit - ${inputController.text}');
     dynamic instance = CollegesList(country: inputController.text.toString());
     await instance.getColleges();
-    print(instance.isValid);
 
+    print(instance.isValid);
+    if (instance.isValid) {
+      Navigator.pushNamed(context, '/colleges', arguments: {
+        'country': instance.country,
+        'colleges': instance.colleges,
+      });
+    }
     inputController.clear();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   @override

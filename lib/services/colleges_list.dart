@@ -23,11 +23,6 @@ class CollegesList {
       isValid = false;
     }
 
-    for (var element in response) {
-      print(element);
-    }
-    print('\n');
-
     // clear input field
   }
 }
